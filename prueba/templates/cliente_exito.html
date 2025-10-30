@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+{% csrf_token %}
+    <h1>Cliente Registrado</h1>
+    
+    {% if datos %}
+        nombre: {{ datos.nombre }} <br>
+        correo: {{ datos.correo }} <br> 
+        año de nacimiento: {{ datos.año_nacimiento }} <br>
+        edad: {{ datos.edad }} <br>
+        pais: {{ datos.pais }} <br>
+    {% else %}
+        <h2>No se han recibido datos aún.</h2>
+    {% endif %}
+    <a href="{{ {% url "crear_clientes" %}}}">Crear otro cliente</a>
+{% endblock %}

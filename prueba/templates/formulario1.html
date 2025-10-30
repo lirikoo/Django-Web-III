@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Formulario de registro de cliente</h1>
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre"><br><br>
+        
+        <label for="correo">Correo:</label>
+        <input type="email" name="correo" id="correo"><br><br>
+        
+        <label for="año_nacimiento">Año de nacimiento</label>
+        <input type="number" name="año_nacimiento" id="año_nacimiento"><br><br>
+
+        <label for="pais">Pais de nacimiento</label>
+        <input type="text" name="pais" id="pais"><br><br>
+        
+        <button type="submit">ENVIAR</button>
+        <button type="reset">CANCELAR</button>
+    </form>
+
+    {% if datos %}
+        <h2>Datos recibidos:</h2>
+        <p>Nombre: {{ datos.nombre }}</p>
+        <p>Correo: {{ datos.correo }}</p>
+        <p>Año de nacimiento: {{ datos.año_nacimiento }}</p>
+        <p>Edad: {{ datos.edad }} </p>
+        <p>pais: {{datos.pais}}</p>
+        {% else %}
+        <h2>No se han recibido datos aún.</h2>
+    {% endif %}
+
+    
+{% endblock %}
